@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Layouts/Header";
 import { Link } from 'react-router-dom';
+/* eslint-disable */
 export default function LandingPage() {
   return (
     <div>

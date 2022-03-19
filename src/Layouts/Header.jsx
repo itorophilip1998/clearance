@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+/* eslint-disable */
 export default function Header() {
   return (
     <div>
@@ -63,9 +63,9 @@ export default function Header() {
                     <a href="#">
                       <span>Login</span>
                     </a>
-                    <a href="#" className="d-none">
+                    {/* <a href="#" className="d-none">
                       <span>Logout</span>
-                    </a>
+                    </a> */}
                   </li>
                 </ul>
               </div>
