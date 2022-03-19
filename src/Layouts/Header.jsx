@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -38,59 +39,32 @@ export default function Header() {
         <div className="top-menu">
           <div className="container">
             <div className="row">
-              <div className="col-xs-2">
+              <div className="col-lg-6 col-xs-7 ">
                 <div id="fh5co-logo">
-                  <a href="/"> 
+                  <a href="/">
                     <img className="logo" src="logo.jpg" />
-                    AKSU Clearance Portal
+                    <small className="logoText">AKSU CLearance Portal</small>
                   </a>
                 </div>
               </div>
-              <div className="col-xs-10 text-right menu-1">
+              <div className="col-lg-6 col-xs-5 text-right menu-1">
                 <ul>
                   <li className="active">
-                    <a href="index.html">Home</a>
+                    <Link to="/">Home</Link>
+                  </li>
+
+                  <li>
+                    <Link to="about.html">About</Link>
                   </li>
                   <li>
-                    <a href="courses.html">Courses</a>
+                    <Link to="/Link">Dashboard</Link>
                   </li>
-                  <li>
-                    <a href="teacher.html">Teacher</a>
-                  </li>
-                  <li>
-                    <a href="about.html">About</a>
-                  </li>
-                  <li>
-                    <a href="pricing.html">Pricing</a>
-                  </li>
-                  <li className="has-dropdown">
-                    <a href="blog.html">Blog</a>
-                    <ul className="dropdown">
-                      <li>
-                        <a href="#">Web Design</a>
-                      </li>
-                      <li>
-                        <a href="#">eCommerce</a>
-                      </li>
-                      <li>
-                        <a href="#">Branding</a>
-                      </li>
-                      <li>
-                        <a href="#">API</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="contact.html">Contact</a>
-                  </li>
-                  <li className="btn-cta">
+                  <li className="btn-cta ">
                     <a href="#">
                       <span>Login</span>
                     </a>
-                  </li>
-                  <li className="btn-cta">
-                    <a href="#">
-                      <span>Create a Course</span>
+                    <a href="#" className="d-none">
+                      <span>Logout</span>
                     </a>
                   </li>
                 </ul>
