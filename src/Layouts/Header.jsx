@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"; 
 /* eslint-disable */
-export default function Header() {
+export default function Header(props) {
+    // console.log(props)
   return (
     <div>
       <nav className="fh5co-nav" role="navigation">
@@ -50,17 +50,18 @@ export default function Header() {
               <div className="col-lg-6 col-xs-5 text-right menu-1">
                 <ul>
                   <li className="active">
-                    <Link to="/">Home</Link>
+                    <a href="/">Home</a>
                   </li>
 
+                                  
                   <li>
-                    <Link to="about.html">About</Link>
+                    <a href="#about">About</a>
                   </li>
                   <li>
-                    <Link to="/Link">Dashboard</Link>
+                    <a href="/dashboard">Dashboard</a>
                   </li>
-                  <li className="btn-cta ">
-                    <a href="#">
+                  <li className="btn-cta">
+                    <a href="/login">
                       <span>Login</span>
                     </a>
                     {/* <a href="#" className="d-none">

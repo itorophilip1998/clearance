@@ -13,8 +13,26 @@ code {
 }
 
 .logo{
-  width: 100px !important;
+  width: 45px !important;
+  margin-right: 5px;
 }
 .logoText{
   font-size: 16px !important;
 }
+
+.js-gotop{
+  background-color: royalblue !important;
+}
+
+.rounded-0{
+  border-radius: 4px !important ;
+  width: 50%;
+  margin-top: 20px;
+}
+
+ 
+/* 
+#fh5co-hero {
+      background: #fff url(images/loader.gif) no-repeat center center;
+
+} */
