@@ -1,7 +1,11 @@
 import React from "react"; 
 /* eslint-disable */
 export default function Header(props) {
-    // console.log(props)
+  const { token } = props; 
+  const logout=()=> {
+    localStorage.clear()
+    window.location.href='/dashboard'
+  }
   return (
     <div>
       <nav className="fh5co-nav" role="navigation">
@@ -60,13 +64,13 @@ export default function Header(props) {
                   <li>
                     <a href="/dashboard">Dashboard</a>
                   </li>
-                  <li className="btn-cta">
-                    <a href="/login">
+                  <li className="btn-cta rounded-lg link">
+                    {!token && <a href="/login" >
                       <span>Login</span>
-                    </a>
-                    {/* <a href="#" className="d-none">
+                    </a>}
+                    { token && <a onClick={logout} >
                       <span>Logout</span>
-                    </a> */}
+                    </a> }
                   </li>
                 </ul>
               </div>

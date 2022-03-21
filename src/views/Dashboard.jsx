@@ -1,132 +1,224 @@
-import React from 'react';
+import React from "react";
 /* eslint-disable */
+require("../middleware/auth");
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+  const { user } = props;
+  const debt = {
+    department: 5000,
+    faculty: 2000,
+    student_affair: 2500,
+    library: 1000,
+    health_services: 7000,
+    busary: 45000,
+    accademic_affair: 2000,
+    registrar: 6000
+  };
+  const debt2 = [
+    { department: 5000 },
+    { faculty: 2000 },
+    { student_affair: 2500 },
+    { library: 1000 },
+    { health_services: 7000 },
+    { busary: 45000 },
+    { accademic_affair: 2000 },
+    { registrar: 6000 }
+  ];
+  const match = {
+    health_services: true,
+    busary: true,
+    accademic_affair: false,
+    registrar: true
+}
+     
+  const sum = () => {
+    const newdebt = debt2.filter((item) => {
+      // return item.health_services == true;
+    })
+     console.log(match, newdebt);
+  }
+  sum();
   return (
     <>
-      <aside id="fh5co-hero">
-        <div className="flexslider" style={{ height: "40vh !important" }}>
-          <ul className="slides">
-            <li style={{ backgroundImage: "url(images/img_bg_4.jpg)" }}>
-              <div className="overlay-gradient"></div>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-8 col-md-offset-2 text-center slider-text">
-                    <div className="slider-text-inner">
-                      <h1 className="heading-section">Dashboard!</h1>
-                      <h2>
-                        Access your files all in one place!
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
       <div id="fh5co-pricing" className="fh5co-bg-section">
         <div className="container">
-          
           <div className="row">
             <div className="pricing pricing--rabten">
-              <div className="col-md-4 animate-box">
+              <div className="col-md-8 m-auto animate-box shadow">
                 <div className="pricing__item">
-                  <div className="wrap-price">
+                  {/* <img src="" alt="" /> */}
+                  <div className="wrap-price text-center">
                     {/* <!-- <div className="icon icon-user2"></div> --> */}
-                    <h3 className="pricing__title">Trial</h3>
+                    <h3 className="pricing__title">
+                      <i
+                        className="fa fa-user-circle text-dark"
+                        aria-hidden="true"
+                      ></i>
+                      {"Itoro Emmanuel Philip"}
+                    </h3>
+                    <p>{"Computer Science, Applied Science, 2019/2021"}</p>
+                    <b className="m1-0">{"FPOCha2019"}</b>
                     {/* <!-- <p className="pricing__sentence">Single user license</p> --> */}
                   </div>
                   <div className="pricing__price">
-                    <span className="pricing__anim pricing__anim--1">
-                      <span className="pricing__currency">$</span>0
+                    {/* <span className="pricing__anim pricing__anim--1 text-success"> 
+                      You are Cleared
+                    </span> */}
+                    <span className="pricing__anim pricing__anim--1 text-danger">
+                      <span className="pricing__currency">₦</span>
+                      3000
                     </span>
                     <span className="pricing__anim pricing__anim--2">
-                      <span className="pricing__period">per year</span>
+                      <span className="pricing__period"></span>
                     </span>
                   </div>
                   <div className="wrap-price">
-                    <ul className="pricing__feature-list">
-                      <li className="pricing__feature">One Day Trial</li>
-                      <li className="pricing__feature">Limited Courses</li>
-                      <li className="pricing__feature">Free 3 Lessons</li>
-                      <li className="pricing__feature">No Supporter</li>
-                      <li className="pricing__feature">No Tutorial</li>
-                      <li className="pricing__feature">No Ebook</li>
-                      <li className="pricing__feature">
-                        Limited Registered User
-                      </li>
-                    </ul>
-                    <button className="pricing__action">Choose plan</button>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4 animate-box">
-                <div className="pricing__item">
-                  <div className="wrap-price">
-                    {/* <!-- <div className="icon icon-store"></div> --> */}
-                    <h3 className="pricing__title">Silver</h3>
-                    {/* <!-- <p className="pricing__sentence">Up to 5 users</p> --> */}
-                  </div>
-                  <div className="pricing__price">
-                    <span className="pricing__anim pricing__anim--1">
-                      <span className="pricing__currency">$</span>79
-                    </span>
-                    <span className="pricing__anim pricing__anim--2">
-                      <span className="pricing__period">per year</span>
-                    </span>
-                  </div>
-                  <div className="wrap-price">
-                    <ul className="pricing__feature-list">
-                      <li className="pricing__feature">
-                        One Year Standard Access
-                      </li>
-                      <li className="pricing__feature">Limited Courses</li>
-                      <li className="pricing__feature">300+ Lessons</li>
-                      <li className="pricing__feature">Random Supporter</li>
-                      <li className="pricing__feature">View Only Ebook</li>
-                      <li className="pricing__feature">Standard Tutorials</li>
-                      <li className="pricing__feature">
-                        Unlimited Registered User
-                      </li>
-                    </ul>
-                    <button className="pricing__action">Choose plan</button>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4 animate-box">
-                <div className="pricing__item">
-                  <div className="wrap-price">
-                    {/* <!-- <div className="icon icon-home2"></div> --> */}
-                    <h3 className="pricing__title">Gold</h3>
-                    {/* <!-- <p className="pricing__sentence">Unlimited users</p> --> */}
-                  </div>
-                  <div className="pricing__price">
-                    <span className="pricing__anim pricing__anim--1">
-                      <span className="pricing__currency">$</span>499
-                    </span>
-                    <span className="pricing__anim pricing__anim--2">
-                      <span className="pricing__period">per year</span>
-                    </span>
-                  </div>
-                  <div className="wrap-price">
-                    <ul className="pricing__feature-list">
-                      <li className="pricing__feature">Life Time Access</li>
-                      <li className="pricing__feature">
-                        Unlimited All Courses
-                      </li>
-                      <li className="pricing__feature">
-                        7000+ Lessons &amp; Growing
-                      </li>
-                      <li className="pricing__feature">Free Supporter</li>
-                      <li className="pricing__feature">Free Ebook Downloads</li>
-                      <li className="pricing__feature">Premium Tutorials</li>
-                      <li className="pricing__feature">
-                        Unlimited Registered User
-                      </li>
-                    </ul>
-                    <button className="pricing__action">Choose plan</button>
+                    <table className="table mb-5 text-left">
+                      <thead>
+                        <tr>
+                          <th>Office</th>
+                          <th>Clearance Status</th>
+                          <th>
+                            Owing(<s>paid</s>)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/*  */}
+                        <tr>
+                          <td>Department(HOD)</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="debt">₦{debt.department}</span>
+                          </td>
+                        </tr>
+                        {/*  */}
+                        <tr>
+                          <td>Faculty</td>
+                          <td>
+                            <i
+                              className="fa fa-times text-danger"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">₦{debt.faculty}</span>
+                          </td>
+                        </tr>
+                        {/*  */}
+                        <tr>
+                          <td>Students Affair Unit</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">
+                              ₦{debt.student_affair}
+                            </span>
+                          </td>
+                        </tr>
+
+                        {/*  */}
+                        <tr>
+                          <td>Library</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">₦{debt.library}</span>
+                          </td>
+                        </tr>
+
+                        {/*  */}
+                        <tr>
+                          <td>Health Service Unit</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">
+                              ₦{debt.health_services}
+                            </span>
+                          </td>
+                        </tr>
+
+                        {/*  */}
+                        <tr>
+                          <td>Library</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">₦{debt.library}</span>
+                          </td>
+                        </tr>
+
+                        {/*  */}
+                        <tr>
+                          <td>Bursary</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">₦{debt.busary}</span>
+                          </td>
+                        </tr>
+
+                        {/*  */}
+                        <tr>
+                          <td>Accademic Affair</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">
+                              ₦{debt.accademic_affair}
+                            </span>
+                          </td>
+                        </tr>
+
+                        {/*  */}
+                        <tr>
+                          <td>Registrar</td>
+                          <td>
+                            <i
+                              className="fa fa-check text-success"
+                              aria-hidden="true"
+                            ></i>
+                          </td>
+                          <td>
+                            <span className="cleared">₦{debt.registrar}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <button className="pricing__action">
+                      Print Clearance Reciept
+                    </button>
+                    {/* <button className="pricing__action">Clear Now</button> */}
                   </div>
                 </div>
               </div>

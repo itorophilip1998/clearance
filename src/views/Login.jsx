@@ -1,47 +1,34 @@
 import React, { useState } from "react";
-// import dotenv from "dotenv";
-// dotenv.config();
-
+import axios from "axios";
 /* eslint-disable */
 
 export default function Login(props) {
-  const { api } = props;
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-  console.log(props);
-
-  const loginFunc = (e) => {
-    e.preventDefault();
-    fetch(`${api}/`);
+  const { api } = props;
+  const loginFunc = async (e) => {
+    e.preventDefault(); 
+    axios
+      .post(`${api}/signin`, data)
+      .then((res) => { 
+        const { role } = res.data.user; 
+        localStorage.setItem("role", role);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("token", res.data.access_token);
+        if (role == 'user') { location.href = "/dashboard" }
+        else if(role=='admin'){location.href = "/admin/dashboard"; }
+      })
+      .catch((err) => {});
   };
 
   return (
     <>
-      <aside id="fh5co-hero">
-        <div className="flexslider" style={{ height: "40vh !important" }}>
-          <ul className="slides">
-            <li style={{ backgroundImage: "url(images/img_bg_4.jpg)" }}>
-              <div className="overlay-gradient"></div>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-8 col-md-offset-2 text-center slider-text">
-                    <div className="slider-text-inner">
-                      <h1 className="heading-section">Welcome Back!</h1>
-                      <h2>
-                        All your information is always safe, access them easily
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </aside>
-      <div id="fh5co-contact">
-        <div className="container">
+      <div className="fh5co-loader"></div>
+
+      <div id="fh5co-contact" className="bg-light">
+        <div className="container ">
           <div className="row">
             <div className="col-md-5 col-md-push-1 animate-box">
               <div className="fh5co-contact-info">
@@ -59,7 +46,7 @@ export default function Login(props) {
                 </ul>
               </div>
             </div>
-            <div className="col-md-6 animate-box">
+            <div className="col-md-6 animate-box shadow p-4 border  bg-white">
               <h3>Login</h3>
               <form onSubmit={loginFunc}>
                 <div className="row form-group">

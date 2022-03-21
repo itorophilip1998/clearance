@@ -36,3 +36,35 @@ code {
       background: #fff url(images/loader.gif) no-repeat center center;
 
 } */
+
+a{
+  text-decoration: none !important;
+}
+
+.rounded-lg{
+  border-radius: 5px !important;
+}
+.link{
+  cursor: pointer;
+}
+
+.debt{
+  text-decoration: line-through !important;
+  text-decoration-color: red !important;
+}
+
+.head-card{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cards{
+  text-align: left;
+
+}
+.body-card{
+  color: rgb(224, 223, 223);
+}
+.bg-warning{
+  background: rgb(192, 192, 7) !important;
+}
