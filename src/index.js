@@ -13,8 +13,9 @@ const user = JSON.parse(localStorage.getItem("user"));
 const token = localStorage.getItem("token");
 const config = {
   headers: {
-  "Authorization": `Bearer ${token}`
-}};
+    Authorization: `Bearer ${token}`,
+  },
+};
 const rootElement = document.getElementById("root");
 const path = window.location.pathname;
 /* eslint-disable */
@@ -39,7 +40,7 @@ render(
         <Route
           path="/dashboard"
           element={<Dashboard api={api} token={token} user={user} />}
-        />
+        />  
       </Routes>
 
       <Routes>
