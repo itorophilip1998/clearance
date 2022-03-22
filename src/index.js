@@ -8,7 +8,7 @@ import Header from "./Layouts/Header";
 import Footer from "./Layouts/Footer";
 import Dashboard from "./views/Dashboard";
 import AdminDashboard from "./views/admin/adminDashboard";
-const api = "http://localhost:8000/api";
+const api = "https://clerancesystem-api.herokuapp.com/api";
 const user = JSON.parse(localStorage.getItem("user"));
 const token = localStorage.getItem("token");
 const config = {
