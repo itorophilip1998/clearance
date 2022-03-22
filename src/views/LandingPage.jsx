@@ -19,12 +19,12 @@ export default function LandingPage() {
                       </h1>
                       <h2>Brought to you by AKSU</h2>
                       <p>
-                        <Link
+                        <a
                           className="btn btn-primary btn-lg"
-                          to="/dashboard"
+                          href="/dashboard"
                         >
                           Start Clearance Now!
-                        </Link>
+                        </a>
                       </p>
                     </div>
                   </div>
@@ -42,12 +42,12 @@ export default function LandingPage() {
                       </h1>
                       <h2>Brought to you by AKSU</h2>
                       <p>
-                        <Link
+                        <a
                           className="btn btn-primary btn-lg"
-                          to="/dashboard"
+                          href="/dashboard"
                         >
                           Start Clearance Now!
-                        </Link>
+                        </a>
                       </p>
                     </div>
                   </div>
@@ -63,12 +63,12 @@ export default function LandingPage() {
                       <h1>We Help You to Learn New Things</h1>
                       <h2>Brought to you by AKSU</h2>
                       <p>
-                        <Link
+                        <a
                           className="btn btn-primary btn-lg"
-                          to="/dashboard"
+                          href="/dashboard"
                         >
                           Start Clearance Now!
-                        </Link>
+                        </a>
                       </p>
                     </div>
                   </div>
