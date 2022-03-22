@@ -8,20 +8,19 @@ export default function Login(props) {
     email: "",
     password: "",
   });
-  const [load, setLoad]=useState(false)
+  const [load, setLoad] = useState(false);
   const { api } = props;
   const loginFunc = async (e) => {
     e.preventDefault();
-    setLoad(true)
+    setLoad(true);
     axios
       .post(`${api}/signin`, data)
       .then((res) => {
-        
         const { role } = res.data.user;
         localStorage.setItem("role", role);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("token", res.data.access_token);
-           setLoad(false);
+        setLoad(false);
         if (role == "user") {
           location.href = "/dashboard";
         } else if (role == "admin") {
@@ -29,13 +28,13 @@ export default function Login(props) {
         }
       })
       .catch((err) => {
-           setLoad(false);
+        setLoad(false);
       });
   };
 
   return (
     <>
-   { load && <Loader/>}
+      {load && <Loader />}
       <div id="fh5co-contact" className="bg-light">
         <div className="container ">
           <div className="row">
