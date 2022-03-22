@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Loader from "../components/Loader";
 /* eslint-disable */
 
 export default function Login(props) {
@@ -7,26 +8,34 @@ export default function Login(props) {
     email: "",
     password: "",
   });
+  const [load, setLoad]=useState(false)
   const { api } = props;
   const loginFunc = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
+    setLoad(true)
     axios
       .post(`${api}/signin`, data)
-      .then((res) => { 
-        const { role } = res.data.user; 
+      .then((res) => {
+        
+        const { role } = res.data.user;
         localStorage.setItem("role", role);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("token", res.data.access_token);
-        if (role == 'user') { location.href = "/dashboard" }
-        else if(role=='admin'){location.href = "/admin/dashboard"; }
+           setLoad(false);
+        if (role == "user") {
+          location.href = "/dashboard";
+        } else if (role == "admin") {
+          location.href = "/admin/dashboard";
+        }
       })
-      .catch((err) => {});
+      .catch((err) => {
+           setLoad(false);
+      });
   };
 
   return (
     <>
-      <div className="fh5co-loader"></div>
-
+   { load && <Loader/>}
       <div id="fh5co-contact" className="bg-light">
         <div className="container ">
           <div className="row">
@@ -64,7 +73,7 @@ export default function Login(props) {
                   </div>
                 </div>
 
-                <div className="row form-group">
+                <div className="row form-group mt-3">
                   <div className="col-md-12">
                     <label htmlFor="password">Password</label>
                     <input

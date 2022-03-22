@@ -11,7 +11,14 @@ import AdminDashboard from "./views/admin/adminDashboard";
 const api = "http://localhost:8000/api";
 const user = JSON.parse(localStorage.getItem("user"));
 const token = localStorage.getItem("token");
+const config = {
+  headers: {
+  "Authorization": `Bearer ${token}`
+}};
 const rootElement = document.getElementById("root");
+const path = window.location.pathname;
+/* eslint-disable */
+
 render(
   <BrowserRouter>
     <div id="page">
@@ -38,11 +45,18 @@ render(
       <Routes>
         <Route
           path="/admin/dashboard"
-          element={<AdminDashboard api={api} token={token} user={user} />}
+          element={
+            <AdminDashboard
+              api={api}
+              token={token}
+              user={user}
+              config={config}
+            />
+          }
         />
       </Routes>
 
-      <Footer />
+      {path == "/" && <Footer />}
     </div>
   </BrowserRouter>,
   rootElement

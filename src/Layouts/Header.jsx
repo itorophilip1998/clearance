@@ -14,7 +14,7 @@ export default function Header(props) {
             <div className="row">
               <div className="col-xs-12 text-right">
                 <p className="site">www.asksu.com</p>
-                <ul className="fh5co-social">
+                <ul className="fh5co-social float-right">
                   <li>
                     <a href="#">
                       <i className="icon-facebook2"></i>
@@ -46,13 +46,13 @@ export default function Header(props) {
               <div className="col-lg-6 col-xs-7 ">
                 <div id="fh5co-logo">
                   <a href="/">
-                    <img className="logo" src="logo.jpg" />
+                    <img className="logo" src="/logo.jpg" />
                     <small className="logoText">AKSU CLearance Portal</small>
                   </a>
                 </div>
               </div>
               <div className="col-lg-6 col-xs-5 text-right menu-1">
-                <ul>
+                <ul className="float-right">
                   <li className="active">
                     <a href="/">Home</a>
                   </li>

@@ -7,7 +7,7 @@ export default function Footer() {
       role="contentinfo"
       style={{ backgroundImage: "url(images/img_bg_4.jpg)" }}
     >
-      <div className="overlay"></div>
+      {/* <div className="overlay"></div> */}
       <div className="container">
         <div className="row row-pb-md">
           <div className="col-md-3 fh5co-widget">
