@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import NewStudent from "../../components/NewStudent";
 import Students from "../../components/Students";
+
 /* eslint-disable */
 require("../../middleware/auth");
 
 export default function AdminDashboard(props) {
+  const { api, config } = props;
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -16,6 +20,7 @@ export default function AdminDashboard(props) {
         console.log(err);
       });
   }, []);
+  // console.log(data.users.length);
 
   // const debt = {
   //   department: 5000,
@@ -41,19 +46,25 @@ export default function AdminDashboard(props) {
                     <div className="col-md-3 mx-auto border shadow p-4 bg-success text-white link rounded-lg">
                       <div className="cards">
                         <div className="head-card">Students</div>
-                        <div className="body-card">{500}</div>
+                        <div className="body-card">
+                          {data.users && data.users.length}
+                        </div>
                       </div>
                     </div>
                     <div className="col-md-3 mx-auto border shadow p-4 bg-danger text-white link rounded-lg">
                       <div className="cards">
                         <div className="head-card">Cleared Students</div>
-                        <div className="body-card">{500}</div>
+                        <div className="body-card">
+                          {data.users && data.cleared.length}
+                        </div>
                       </div>
                     </div>
                     <div className="col-md-3 mx-auto border shadow p-4 bg-warning text-white link rounded-lg">
                       <div className="cards">
                         <div className="head-card">Uncleared Students </div>
-                        <div className="body-card">{500}</div>
+                        <div className="body-card">
+                          {data.users && data.not_cleared.length}
+                        </div>
                       </div>
                     </div>
                   </div>

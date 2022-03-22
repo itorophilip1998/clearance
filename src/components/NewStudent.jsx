@@ -52,8 +52,7 @@ export default function NewStudent(props) {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Email Must be RegNo"
-                value="FPOCSHA20001"
+                placeholder="Email Must be RegNo" 
                 required
                 onChange={(e) => setData({ ...data, email: e.target.value })}
               />
@@ -64,7 +63,7 @@ export default function NewStudent(props) {
                 type="password"
                 className="form-control"
                 placeholder="Password Must be RegNo"
-                value="FPOCSHA20001"
+               
                 required
                 onChange={(e) => setData({ ...data, password: e.target.value })}
               />
@@ -84,8 +83,7 @@ export default function NewStudent(props) {
               <input
                 type="text"
                 className="form-control"
-                placeholder="session"
-                value="2021/2022"
+                placeholder="session" 
                 required
                 onChange={(e) => setData({ ...data, session: e.target.value })}
               />
@@ -95,8 +93,7 @@ export default function NewStudent(props) {
               <input
                 type="text"
                 className="form-control"
-                placeholder="_department"
-                value="Computer Science"
+                placeholder="_department" 
                 required
                 onChange={(e) =>
                   setData({ ...data, _department: e.target.value })
@@ -110,8 +107,7 @@ export default function NewStudent(props) {
                 type="text"
                 required
                 className="form-control"
-                placeholder="_faculty"
-                value="Applied Science"
+                placeholder="_faculty" 
                 onChange={(e) => setData({ ...data, _faculty: e.target.value })}
               />
             </div>
