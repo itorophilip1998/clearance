@@ -1,11 +1,22 @@
-import React from "react"; 
+import React, { useState, useEffect } from "react";
 import NewStudent from "../../components/NewStudent";
 import Students from "../../components/Students";
 /* eslint-disable */
 require("../../middleware/auth");
 
 export default function AdminDashboard(props) {
-  const { user } = props;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${api}/get-all`, config)
+      .then((result) => {
+        setData(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   // const debt = {
   //   department: 5000,
   //   faculty: 2000,
@@ -16,8 +27,7 @@ export default function AdminDashboard(props) {
   //   accademic_affair: 2000,
   //   registrar: 6000,
   // };
- 
- 
+
   return (
     <>
       <div id="fh5co-pricing" className="fh5co-bg-section">

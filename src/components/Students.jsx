@@ -14,8 +14,7 @@ export default function Students(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-  console.log(data);
+  }, []); 
 
   return (
     <div className="p-3">
