@@ -24,8 +24,7 @@ export default function Students(props) {
             <th scope="col">Name</th>
             <th scope="col">RegNo/Email</th>
             <th scope="col">Session</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Status</th>  
           </tr>
         </thead>
         <tbody>
@@ -38,10 +37,7 @@ export default function Students(props) {
                 {(item.status && (
                   <span class="badge bg-success">Cleared</span>
                 )) || <span class="badge bg-danger">Not Cleared</span>}
-              </td>
-              <td>
-                {item.status && <i class="fas fa-pen text-success link"></i>}
-              </td>
+              </td> 
             </tr>
           ))}
         </tbody>

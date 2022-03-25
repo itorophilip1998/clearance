@@ -20,19 +20,7 @@ export default function AdminDashboard(props) {
         console.log(err);
       });
   }, []);
-  // console.log(data.users.length);
-
-  // const debt = {
-  //   department: 5000,
-  //   faculty: 2000,
-  //   student_affair: 2500,
-  //   library: 1000,
-  //   health_services: 7000,
-  //   busary: 45000,
-  //   accademic_affair: 2000,
-  //   registrar: 6000,
-  // };
-
+    
   return (
     <>
       <div id="fh5co-pricing" className="fh5co-bg-section">

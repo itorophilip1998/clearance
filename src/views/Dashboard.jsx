@@ -1,9 +1,10 @@
 import React from "react";
+import Pay from "../components/Pay";
 /* eslint-disable */
-require("../middleware/auth");
+require("../middleware/auth"); 
 
 export default function Dashboard(props) {
-  const { user } = props;
+  const { user,api } = props;
   const debt = {
     department: 5000,
     faculty: 2000,
@@ -12,32 +13,49 @@ export default function Dashboard(props) {
     health_services: 7000,
     busary: 45000,
     accademic_affair: 2000,
-    registrar: 6000
+    registrar: 6000,
   };
-  const debt2 = [
-    { department: 5000 },
-    { faculty: 2000 },
-    { student_affair: 2500 },
-    { library: 1000 },
-    { health_services: 7000 },
-    { busary: 45000 },
-    { accademic_affair: 2000 },
-    { registrar: 6000 }
-  ];
-  const match = {
-    health_services: true,
-    busary: true,
-    accademic_affair: false,
-    registrar: true
-}
-     
+  const debt2 = {
+    department: 5000,
+    faculty: 2000,
+    student_affair: 2500,
+    library: 1000,
+    health_services: 7000,
+    busary: 45000,
+    accademic_affair: 2000,
+    registrar: 6000,
+  };
+
   const sum = () => {
-    const newdebt = debt2.filter((item) => {
-      // return item.health_services == true;
-    })
-     console.log(match, newdebt);
-  }
-  sum();
+    try {
+      if (user.department) {
+        debt2.department=0
+      }
+      if (user.faculty) {
+        debt2.faculty = 0;
+      } if (user.student_affair) {
+        debt2.student_affair = 0;
+      } if (user.library) {
+        debt2.library = 0;
+      }   if (user.health_services) {
+        debt2.health_services = 0;
+      }   if (user.busary) {
+        debt2.busary = 0;
+      }   if (user.accademic_affair) {
+        debt2.accademic_affair = 0;
+      }   if (user.registrar) {
+        debt2.registrar = 0;
+      }
+ 
+      const getCount = Object.values(debt2).reduce((a, b) => a + b, 0);
+
+      return getCount;
+    } catch (error) {
+      
+    }
+  }; 
+
+         const cash=(e)=>Intl.NumberFormat("en-US").format(e)
   return (
     <>
       <div id="fh5co-pricing" className="fh5co-bg-section">
@@ -50,24 +68,24 @@ export default function Dashboard(props) {
                   <div className="wrap-price text-center">
                     {/* <!-- <div className="icon icon-user2"></div> --> */}
                     <h3 className="pricing__title">
-                      <i
-                        className="fa fa-user-circle text-dark"
-                        aria-hidden="true"
-                      ></i>
-                      {"Itoro Emmanuel Philip"}
+                      {/* <img src="/logo.jpg" alt="" className="logo" /> */}
+                      {" " + user.name}
                     </h3>
-                    <p>{"Computer Science, Applied Science, 2019/2021"}</p>
-                    <b className="m1-0">{"FPOCha2019"}</b>
+                    <p>{`${user._department} , ${user._faculty}, ${user.session}`}</p>
+                    <b className="m1-0">{user.email}</b>
                     {/* <!-- <p className="pricing__sentence">Single user license</p> --> */}
                   </div>
                   <div className="pricing__price">
-                    {/* <span className="pricing__anim pricing__anim--1 text-success"> 
-                      You are Cleared
-                    </span> */}
-                    <span className="pricing__anim pricing__anim--1 text-danger">
-                      <span className="pricing__currency">₦</span>
-                      3000
-                    </span>
+                    {(user.status && (
+                      <span className="pricing__anim pricing__anim--1 text-success">
+                        You are Cleared
+                      </span>
+                    )) || (
+                      <span className="pricing__anim pricing__anim--1 text-danger">
+                        <span className="pricing__currency">₦</span>
+                        {cash(sum())}
+                      </span>
+                    )}
                     <span className="pricing__anim pricing__anim--2">
                       <span className="pricing__period"></span>
                     </span>
@@ -88,39 +106,64 @@ export default function Dashboard(props) {
                         <tr>
                           <td>Department(HOD)</td>
                           <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.department && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="debt">₦{debt.department}</span>
+                            <span className={user.department && "debt"}>
+                              ₦{debt.department}
+                            </span>
                           </td>
                         </tr>
                         {/*  */}
                         <tr>
                           <td>Faculty</td>
                           <td>
-                            <i
-                              className="fa fa-times text-danger"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.faculty && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="cleared">₦{debt.faculty}</span>
+                            <span className={user.faculty && "debt"}>
+                              ₦{debt.faculty}
+                            </span>
                           </td>
                         </tr>
                         {/*  */}
                         <tr>
                           <td>Students Affair Unit</td>
                           <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.student_affair && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="cleared">
+                            <span className={user.student_affair && "debt"}>
                               ₦{debt.student_affair}
                             </span>
                           </td>
@@ -130,61 +173,72 @@ export default function Dashboard(props) {
                         <tr>
                           <td>Library</td>
                           <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.library && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="cleared">₦{debt.library}</span>
+                            <span className={user.library && "debt"}>
+                              ₦{debt.library}
+                            </span>
                           </td>
                         </tr>
 
-                        {/*  */}
+                        {/*  HealthServices*/}
                         <tr>
                           <td>Health Service Unit</td>
                           <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.health_services && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="cleared">
+                            <span className={user.health_services && "debt"}>
                               ₦{debt.health_services}
                             </span>
                           </td>
                         </tr>
 
-                        {/*  */}
-                        <tr>
-                          <td>Library</td>
-                          <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
-                          </td>
-                          <td>
-                            <span className="cleared">₦{debt.library}</span>
-                          </td>
-                        </tr>
-
-                        {/*  */}
+                        {/* busary */}
                         <tr>
                           <td>Bursary</td>
                           <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.busary && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="cleared">₦{debt.busary}</span>
+                            <span className={user.busary && "debt"}>
+                              ₦{debt.busary}
+                            </span>
                           </td>
                         </tr>
 
-                        {/*  */}
+                        {/*accedamicaffair  */}
                         <tr>
                           <td>Accademic Affair</td>
                           <td>
@@ -194,31 +248,44 @@ export default function Dashboard(props) {
                             ></i>
                           </td>
                           <td>
-                            <span className="cleared">
+                            <span className={user.accademic_affair && "debt"}>
                               ₦{debt.accademic_affair}
                             </span>
                           </td>
                         </tr>
 
-                        {/*  */}
+                        {/* Registrar */}
                         <tr>
                           <td>Registrar</td>
                           <td>
-                            <i
-                              className="fa fa-check text-success"
-                              aria-hidden="true"
-                            ></i>
+                            {(user.registrar && (
+                              <i
+                                className="fa fa-check text-success"
+                                aria-hidden="true"
+                              ></i>
+                            )) || (
+                              <i
+                                className="fa fa-times text-danger"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                           </td>
                           <td>
-                            <span className="cleared">₦{debt.registrar}</span>
+                            <span className={user.registrar && "debt"}>
+                              ₦{debt.registrar}
+                            </span>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                    <button className="pricing__action">
-                      Print Clearance Reciept
-                    </button>
-                    {/* <button className="pricing__action">Clear Now</button> */}
+                    {(user.status && (
+                      <button
+                        className="pricing__action"
+                        onClick={(e) => window.print()}
+                      >
+                        Print Clearance Reciept
+                      </button>
+                    )) || <Pay user={user} api={api} amount={sum()} />}
                   </div>
                 </div>
               </div>

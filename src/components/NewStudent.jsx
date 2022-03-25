@@ -33,7 +33,7 @@ export default function NewStudent(props) {
     setLoad(true);
     axios.post(`${api}/signup`,data,config).then((res) => {
       setLoad(false);
-      location.reload()
+      // location.reload()
       
     }).catch((err) => {
       setLoad(false);

@@ -26,7 +26,7 @@ render(
       <Header api={api} token={token} user={user} />
 
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" exact element={<LandingPage />} />
       </Routes>
 
       <Routes>
