@@ -34,7 +34,10 @@ render(
       </Routes>
 
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login api={api} token={token} user={user} />}
+        />
       </Routes>
 
       <Routes>
