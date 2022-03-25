@@ -285,7 +285,7 @@ export default function Dashboard(props) {
                       >
                         Print Clearance Reciept
                       </button>
-                    )) || <Pay user={user} api={api} amount={sum()} />}
+                    )) || <Pay  user={user} api={api} amount={sum()} />}
                   </div>
                 </div>
               </div>

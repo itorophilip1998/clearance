@@ -28,9 +28,9 @@ export default function Pay(props) {
 
   const componentProps = {
     reference: new Date().getTime().toString(),
-    email: "aksu@gmail.com",
-    amount: props.amount * 100,
-    publicKey: "pk_test_6d009707eb18b933c0617f76b91210694ee47c55",
+    email: "itkeyzzpianny@gmail.com",
+    amount: props.amount * 100 || 10000,
+    publicKey: "pk_test_cd99366d3f03586b34de50fd34d28ff578c7e9e2",
     text: "Clear Now",
     onSuccess: (reference) => handlePaystackSuccessAction(reference),
     onClose: handlePaystackCloseAction,
@@ -38,7 +38,7 @@ export default function Pay(props) {
 
   return (
     <>
-      <PaystackButton {...componentProps} className="pricing__action" />
+      <PaystackButton  {...componentProps} className="pricing__action" />
     </>
   );
 }
