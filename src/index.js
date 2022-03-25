@@ -26,7 +26,11 @@ render(
       <Header api={api} token={token} user={user} />
 
       <Routes>
-        <Route path="/" exact element={<LandingPage />} />
+        <Route
+          path="/"
+          exact
+          element={<LandingPage api={api} token={token} user={user} />}
+        />
       </Routes>
 
       <Routes>
@@ -40,7 +44,7 @@ render(
         <Route
           path="/dashboard"
           element={<Dashboard api={api} token={token} user={user} />}
-        />  
+        />
       </Routes>
 
       <Routes>
